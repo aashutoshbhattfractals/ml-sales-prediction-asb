@@ -4,20 +4,8 @@ import numpy as np
 
 app = Flask(__name__)
 
-
-import os
-
-# List all files in the current directory
-current_dir = os.getcwd()
-files = [f for f in os.listdir(current_dir) if os.path.isfile(os.path.join(current_dir, f))]
-
-print("Files in the current directory:")
-for file in files:
-    print(file)
-
-
 # Load the model
-with open('./model.pkl', 'rb') as f:
+with open('model.pkl', 'rb') as f:
   model = pickle.load(f)
 
 @app.route('/')
