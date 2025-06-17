@@ -3,7 +3,7 @@ steps:
     args:
       [
         'build',
-        '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/ml-sales-prediction-asb/ml-sales-prediction-asb:$SHORT_SHA',
+        '-t', 'us-east1-docker.pkg.dev/$PROJECT_ID/ml-sales-prediction-asb-ar/ml-sales-prediction-asb:$SHORT_SHA',
         '.'
       ]
     id: 'Build Docker image'
@@ -12,7 +12,7 @@ steps:
     args:
       [
         'push',
-        'us-central1-docker.pkg.dev/$PROJECT_ID/ml-sales-prediction-asb/ml-sales-prediction-asb:$SHORT_SHA'
+        'us-east1-docker.pkg.dev/$PROJECT_ID/ml-sales-prediction-asb-ar/ml-sales-prediction-asb:$SHORT_SHA'
       ]
     id: 'Push to Artifact Registry'
 
@@ -21,8 +21,8 @@ steps:
     args:
       [
         'run', 'deploy', 'ml-sales-prediction-asb',
-        '--image', 'us-central1-docker.pkg.dev/$PROJECT_ID/ml-sales-prediction-asb/ml-sales-prediction-asb:$SHORT_SHA',
-        '--region', 'us-central1',
+        '--image', 'us-east1-docker.pkg.dev/$PROJECT_ID/ml-sales-prediction-asb-ar/ml-sales-prediction-asb:$SHORT_SHA',
+        '--region', 'us-east1',
         '--platform', 'managed',
         '--allow-unauthenticated',
         '--set-env-vars', 'VERSION=$SHORT_SHA'
